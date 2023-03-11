@@ -1,17 +1,10 @@
-import './App.css';
+import { convertJsonToXlsxAndDownload } from './utils/convertJsonToXlsx';
 
-var xlsx = require('xlsx');
 const data = require('./data.json');
 
 function App() {
   const handleDownload = () => {
-    const fileName = "convertedJsontoExcel";
-
-    var workBook = xlsx.utils.book_new();
-    var workSheet = xlsx.utils.json_to_sheet(data);
-
-    xlsx.utils.book_append_sheet(workBook,workSheet)
-    xlsx.writeFile(workBook, `${fileName}.xlsx`)
+    convertJsonToXlsxAndDownload("convertedJsontoExcel", data);
   }
   
   return (
